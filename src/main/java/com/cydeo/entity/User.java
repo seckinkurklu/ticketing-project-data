@@ -2,12 +2,19 @@ package com.cydeo.entity;
 
 import com.cydeo.enums.Gender;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
+@Entity
+@Table(name = "users")
 public class User extends BaseEntity {
 
     private String firstName;
