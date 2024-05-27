@@ -12,7 +12,6 @@ public class TicketingProjectDataApplication {
         SpringApplication.run(TicketingProjectDataApplication.class, args);
     }
 
-    ModelMapper mapper = new ModelMapper();
 
     @Bean
     public ModelMapper mapper(){
