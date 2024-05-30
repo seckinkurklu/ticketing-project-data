@@ -13,6 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>ticketing-project-data</name>
     <description>ticketing-project-data</description>
+
     <properties>
         <java.version>11</java.version>
     </properties>
