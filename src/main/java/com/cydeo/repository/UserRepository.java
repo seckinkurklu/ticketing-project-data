@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByUserName(String username);
-    @Transactional
+    @Transactional   //This is optional. One we put on UserServiceImpl at class level is enough. Application works that way also.
     void deleteByUserName(String username);
 
 }
