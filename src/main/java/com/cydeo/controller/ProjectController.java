@@ -2,6 +2,7 @@ package com.cydeo.controller;
 
 import com.cydeo.dto.ProjectDTO;
 import com.cydeo.dto.UserDTO;
+import com.cydeo.service.ProjectService;
 import com.cydeo.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +17,7 @@ import java.util.List;
 public class ProjectController {
 
     private final UserService userService;
-    private final ProjectServic projectService;
+    private final ProjectService projectService;
 
     public ProjectController(UserService userService, ProjectService projectService) {
         this.userService = userService;
@@ -27,7 +28,7 @@ public class ProjectController {
     public String createProject(Model model) {
 
         model.addAttribute("project", new ProjectDTO());
-        model.addAttribute("managers", userService.findManagers());
+        model.addAttribute("managers", userService.listAllByRole("manager"));
         model.addAttribute("projects", projectService.findAll());
 
         return "/project/create";
