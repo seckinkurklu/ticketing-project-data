@@ -9,6 +9,7 @@ import com.cydeo.service.ProjectService;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.io.StringReader;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +26,10 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public ProjectDTO getByProjectCode(String code) {
+
+        Project project = projectRepository.findByProjectCode(code);
+        projectMapper.convertToDto(project);
+
         return null;
     }
 
@@ -55,10 +60,20 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public void delete(String code) {
 
+        Project project = projectRepository.findByProjectCode(code);
+
+        project.setIsDeleted(true);
+
+        projectRepository.save(project);
+
     }
 
     @Override
     public void complete(String projectCode) {
+
+        Project project = projectRepository.findByProjectCode(projectCode);
+        project.setProjectStatus(Status.COMPLETE);
+        projectRepository.save(project);
 
     }
 }
